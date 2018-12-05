@@ -72,3 +72,5 @@ def post_zip_code_page():
 #@app.route('/user/<username>')
 #@app.route('/login', methods=['GET', 'POST'])
 
+if __name__ == '__main__':
+      app.run(host='0.0.0.0', port=80)
