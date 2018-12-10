@@ -7,6 +7,7 @@ name = 'John'
 lastname = 'Doe'
 zip_code = '0000'
 timestamp = str(time.time())
+state = -1
 
 @app.route('/name')
 def get_name():
@@ -24,9 +25,32 @@ def get_zip():
 def get_timestamp():
 	return timestamp
 
+@app.route('/state')
+def get_state():
+	return str(state)
+
+@app.route('/reset')
+def reset_state():
+	global state
+	state = -1
+
+	global name
+	name = 'Jane'
+
+	global lastname
+	lastname = 'Doe'
+
+	global zip_code
+	zip_code = '0000'
+
+	global timestamp
+	timestamp = str(time.time())
+
+	return get_data()
+
 @app.route('/data')
 def get_data():
-	data = dict(name=get_name(), lastname=get_lastname(), zip_code=get_zip(), timestamp=get_timestamp())
+	data = dict(name=get_name(), lastname=get_lastname(), zip_code=get_zip(), timestamp=get_timestamp(), state=get_state())
 	return jsonify(data)
 
 ###########################################################
@@ -46,6 +70,10 @@ def post_landing_page():
 	global name
 	name = request.form['name']
 	print(name)
+
+	global state
+	state = 0
+
 	return render_template('lastname.html')
 	#return render_template('thanks.html')
 
@@ -57,6 +85,10 @@ def post_lastname_page():
 	global lastname
 	lastname = request.form['lastname']
 	print(lastname)
+
+	global state
+	state = 1
+
 	return render_template('zip_code.html')
 
 @app.route('/2', methods=['POST'])
@@ -67,6 +99,10 @@ def post_zip_code_page():
 	global zip_code
 	zip_code = request.form['zip_code']
 	print(zip_code)
+
+	global state
+	state = 2
+
 	return render_template('thanks.html', name=get_name())
 
 #@app.route('/user/<username>')
