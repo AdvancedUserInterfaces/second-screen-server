@@ -1,6 +1,8 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script type="text/javascript" src="js/hammer.min.js"></script>
 
   <style>
   @import url('https://fonts.googleapis.com/css?family=Lekton');
@@ -42,6 +44,50 @@
                 <label for="name">What's your first name?</label>
                 <input style="background-color: white; width: 50%;" type="text" class="form-control-plaintext" name="name" id="name" value="" placeholder="Jane">
               </div>
+
+
+<style type="text/css">
+              a-scene {
+  height: 30%;
+  width: 100%;
+}
+</style>
+
+<body>
+  <div id="embeddedCubeDiv">
+    <a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded></a-scene>
+  </div>
+</body>
+
+<script type="text/javascript">
+  function showCube() {
+    var scene = document.querySelector('#embeddedScene');
+
+    var cube = document.createElement('a-box');
+    cube.setAttribute('id', 'cube');
+    cube.setAttribute('geometry', { height: 0.25, width: 0.25, depth: 0.25});
+    cube.setAttribute('color', '#EE844E')
+    cube.setAttribute('position', { x: 0, y: 1.5, z: -0.5});
+    cube.setAttribute('metalness', 0.2);
+   
+    var animationRest = document.createElement('a-animation');
+    animationRest.setAttribute('id', 'animation-rest');
+    animationRest.setAttribute('to', '0 180 0');
+    animationRest.setAttribute('ease', 'sine');
+    //animationRest.setAttribute('direction', 'alternate');
+    animationRest.setAttribute('dur', 3000);
+    animationRest.setAttribute('repeat', 'indefinite');
+    cube.append(animationRest);
+
+
+    scene.append(cube);
+
+  }
+
+  showCube();
+</script>
+
+
               <button type="submit" class="btn btn-secondary mb-2">Go!</button>
             </form>  
 
