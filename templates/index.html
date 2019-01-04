@@ -2,7 +2,7 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-  <script type="text/javascript" src="js/hammer.min.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
   <style>
   @import url('https://fonts.googleapis.com/css?family=Lekton');
@@ -10,7 +10,7 @@
   body {
     font-family: 'Lekton', serif;
     font-size: 48px;
-  }  
+  }
 </style>
 
 
@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
         function zoom() {
-            document.body.style.zoom = "300%" 
+            document.body.style.zoom = "300%"
         }
 </script>
 
@@ -37,6 +37,14 @@
         <div class="col-sm">
 
           <div style="align-content: center">
+
+
+            <div id="embeddedCubeDiv">
+              <a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded>
+              </a-scene>
+            </div>
+
+
             <h1 style="font-family: 'Lekton', serif;">Hey you!</h1>
 
             <form class="form" style="font-family: 'Lekton', serif;" action="/" method="post" name="form">
@@ -53,11 +61,7 @@
 }
 </style>
 
-<body>
-  <div id="embeddedCubeDiv">
-    <a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded></a-scene>
-  </div>
-</body>
+
 
 <script type="text/javascript">
   function showCube() {
@@ -69,7 +73,7 @@
     cube.setAttribute('color', '#EE844E')
     cube.setAttribute('position', { x: 0, y: 1.5, z: -0.5});
     cube.setAttribute('metalness', 0.2);
-   
+
     var animationRest = document.createElement('a-animation');
     animationRest.setAttribute('id', 'animation-rest');
     animationRest.setAttribute('to', '0 180 0');
@@ -85,11 +89,18 @@
   }
 
   showCube();
+
+  var c = document.querySelector('#cube');
+  var hammertime = new Hammer(c);
+  hammertime.on('pan', function(ev) {
+	   alert(ev);
+  });
+
 </script>
 
 
               <button type="submit" class="btn btn-secondary mb-2">Go!</button>
-            </form>  
+            </form>
 
           </div>
 
