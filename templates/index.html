@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
         function zoom() {
-            document.body.style.zoom = "150%";
+            document.body.style.zoom = "100%";
         }
 </script>
 
@@ -39,13 +39,12 @@
           <div style="align-content: center">
 
 
-            <div id="embeddedCubeDiv">
+        
+ <div id="embeddedCubeDiv">
               <a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded>
                 <a-camera wasd-controls-enabled="false" look-controls="enabled: false"></a-camera>
-
               </a-scene>
             </div>
-
 <div id="everythingButCube">
             <h1 style="font-family: 'Lekton', serif;">Hey you!</h1>
 
@@ -64,15 +63,62 @@
 
 
 <style type="text/css">
-              a-scene {
-  height: 30%;
+ a-scene {
+  height: 40%;
   width: 100%;
 }
 </style>
 
+</form>
+
+<button id="submit" class="btn btn-secondary mb-2">Go!</button>
+
 
 
 <script type="text/javascript">
+	$('#submit').on('click',function() {
+  		throwCubeAndSubmit();
+	});
+
+function throwCubeAndSubmit() {
+  console.log('Throwing cube...');
+
+  $('#everythingButCube').fadeOut(100);
+	document.querySelector('#eyes').style.visibility = 'visible';
+
+  var cube = document.querySelector('#cube');
+  var animationThrow = document.createElement('a-animation');
+      animationThrow.setAttribute('id', 'animation-throw');
+	  animationThrow.setAttribute('attribute', 'position');
+      animationThrow.setAttribute('to', '0 2 0');
+      animationThrow.setAttribute('direction', 'inverse');
+      animationThrow.setAttribute('dur', 3000);
+      //animationThrow.setAttribute('repeat', 'indefinite');
+   cube.append(animationThrow);
+
+  animationThrow.addEventListener('animationend', function () {
+  	console.log('Submitting form...');
+  	$('#form').submit();
+  });
+}
+
+</script>
+
+
+          </div>
+
+        <h1 id='eyes' style="font-family: 'Lekton', serif; visibility: hidden;">⬆️ 👀 ⬆️</h1>
+
+
+        </div>
+      </div>
+    </div>
+   
+  </center>
+
+  </div>
+
+  <script type="text/javascript">
   function showCube() {
     var scene = document.querySelector('#embeddedScene');
 
@@ -106,54 +152,6 @@
 //  });
 
 </script>
-
-            </form>
-
-<button id="submit" class="btn btn-secondary mb-2">Go!</button>
-
-
-
-<script type="text/javascript">
-	$('#submit').on('click',function() {
-  		throwCubeAndSubmit();
-	});
-
-function throwCubeAndSubmit() {
-  console.log('Throwing cube...');
-
-  $('#everythingButCube').hide();
-
-  var cube = document.querySelector('#cube');
-  var animationThrow = document.createElement('a-animation');
-      animationThrow.setAttribute('id', 'animation-throw');
-	  animationThrow.setAttribute('attribute', 'position');
-      animationThrow.setAttribute('to', '0 2 0');
-      animationThrow.setAttribute('direction', 'inverse');
-      animationThrow.setAttribute('dur', 2000);
-      //animationThrow.setAttribute('repeat', 'indefinite');
-   cube.append(animationThrow);
-
-  animationThrow.addEventListener('animationend', function () {
-  	console.log('Submitting form...');
-  	$('#form').submit();
-  });
-  //return false;
-  // if you want to submit the form here 
-  //
-}
-
-</script>
-
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </center>
-
-  </div>
 
 
 
