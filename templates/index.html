@@ -1,16 +1,16 @@
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
-  <style>
-  @import url('https://fonts.googleapis.com/css?family=Lekton');
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Lekton');
 
-  body {
-    font-family: 'Lekton', serif;
-    font-size: 48px;
-  }
+	body {
+		font-family: 'Lekton', serif;
+		font-size: 48px;
+	}
 </style>
 
 
@@ -18,121 +18,119 @@
 </head>
 
 <script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "100%";
-        }
+	function zoom() {
+		document.body.style.zoom = "100%";
+	}
 </script>
 
 <body style="background-color: #fac1b7;" onload="zoom()">
 
-  <script>
-    var DARK_GREY = '#455e6d';
-    var ORANGE = '#ffbe43'
-  </script>
+	<script>
+		var DARK_GREY = '#455e6d';
+		var ORANGE = '#ffbe43'
+	</script>
 
-  <center>
+	<center>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
 
-          <div style="align-content: center">
-
-
-        
- <div id="embeddedCubeDiv">
-              <a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded>
-                <a-camera wasd-controls-enabled="false" look-controls="enabled: false"></a-camera>
-              </a-scene>
-            </div>
-<div id="everythingButCube">
-            <h1 style="font-family: 'Lekton', serif;">Hey you!</h1>
-
-            <form id="form" class="form" style="font-family: 'Lekton', serif;" name="form" action="/" method="post"> <!--     -->
-              <div class="form-group sm-2">
-                <label for="name">What's your first name?</label>
-                <div class="progress" style="width: 75%; height: 20px;">
-  					<div class="progress-bar bg-secondary" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">1/3</div>
-			  	</div>
-				<br/>
-                
-                <input style="background-color: white; width: 75%;" type="text" class="form-control-plaintext" name="name" id="name" value="" placeholder="Jane">
-              </div>
-
-              
-
-
-<style type="text/css">
- a-scene {
-  height: 40%;
-  width: 100%;
-}
-</style>
-
-</form>
-
-<button id="submit" class="btn btn-secondary mb-2">Go!</button>
+					<div style="align-content: center">
 
 
 
-<script type="text/javascript">
-	$('#submit').on('click',function() {
-  		throwCubeAndSubmit();
-	});
+						<div id="embeddedCubeDiv">
+							<a-scene id="embeddedScene" vr-mode-ui="enabled: false" embedded>
+								<a-camera wasd-controls-enabled="false" look-controls="enabled: false"></a-camera>
+							</a-scene>
+						</div>
+						<div id="everythingButCube">
+							<h1 style="font-family: 'Lekton', serif;">Hey you!</h1>
 
-function throwCubeAndSubmit() {
-  console.log('Throwing cube...');
+							<form id="form" class="form" style="font-family: 'Lekton', serif;" name="form" action="/" method="post"> <!--     -->
+								<div class="form-group sm-2">
+									<label for="name">What's your first name?</label>
+									<div class="progress" style="width: 75%; height: 20px;">
+										<div class="progress-bar bg-secondary" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">1/3</div>
+									</div>
+									<br/>
 
-  $('#everythingButCube').fadeOut(100);
-	document.querySelector('#eyes').style.visibility = 'visible';
+									<input style="background-color: white; width: 75%;" type="text" class="form-control-plaintext" name="name" id="name" value="" placeholder="Jane">
+								</div>
 
-  var cube = document.querySelector('#cube');
-  var animationThrow = document.createElement('a-animation');
-      animationThrow.setAttribute('id', 'animation-throw');
-	  animationThrow.setAttribute('attribute', 'position');
-      animationThrow.setAttribute('to', '0 2 0');
-      animationThrow.setAttribute('direction', 'inverse');
-      animationThrow.setAttribute('dur', 3000);
-      //animationThrow.setAttribute('repeat', 'indefinite');
-   cube.append(animationThrow);
 
-  animationThrow.addEventListener('animationend', function () {
-  	console.log('Submitting form...');
-  	$('#form').submit();
-  });
-}
+								<style type="text/css">
+								a-scene {
+									height: 40%;
+									width: 100%;
+								}
+							</style>
+
+						</form>
+
+						<button id="submit" style="font-family: 'Lekton', serif;" class="btn btn-secondary mb-2">Go!</button>
+
+
+
+						<script type="text/javascript">
+							$('#submit').on('click',function() {
+								throwCubeAndSubmit();
+							});
+
+							function throwCubeAndSubmit() {
+								console.log('Throwing cube...');
+
+								$('#everythingButCube').fadeOut(100);
+								document.querySelector('#eyes').style.visibility = 'visible';
+
+								var cube = document.querySelector('#cube');
+								var animationThrow = document.createElement('a-animation');
+								animationThrow.setAttribute('id', 'animation-throw');
+								animationThrow.setAttribute('attribute', 'position');
+								animationThrow.setAttribute('to', '0 2 0');
+								animationThrow.setAttribute('direction', 'inverse');
+								animationThrow.setAttribute('dur', 3000);
+      							//animationThrow.setAttribute('repeat', 'indefinite');
+      							cube.append(animationThrow);
+
+      animationThrow.addEventListener('animationend', function () {
+      	console.log('Submitting form...');
+      	$('#form').submit();
+      });
+  }
 
 </script>
 
 
-          </div>
+</div>
 
-        <h1 id='eyes' style="font-family: 'Lekton', serif; visibility: hidden;">⬆️ 👀 ⬆️</h1>
+<h1 id='eyes' style="font-family: 'Lekton', serif; visibility: hidden;">⬆️ 👀 ⬆️</h1>
 
 
-        </div>
-      </div>
-    </div>
-   
-  </center>
+</div>
+</div>
+</div>
 
-  </div>
+</center>
 
-  <script type="text/javascript">
-  function showCube() {
-    var scene = document.querySelector('#embeddedScene');
+</div>
 
-    var cube = document.createElement('a-box');
-    cube.setAttribute('id', 'cube');
-    cube.setAttribute('geometry', { height: 0.25, width: 0.25, depth: 0.25});
-    cube.setAttribute('color', '#EE844E');
-    cube.setAttribute('position', { x: 0, y: 0, z: -0.5});
-    cube.setAttribute('metalness', 0.2);
+<script type="text/javascript">
+	function showCube() {
+		var scene = document.querySelector('#embeddedScene');
 
-    var animationRest = document.createElement('a-animation');
-    animationRest.setAttribute('id', 'animation-rest');
-    animationRest.setAttribute('to', '0 180 0');
-    animationRest.setAttribute('ease', 'sine');
+		var cube = document.createElement('a-box');
+		cube.setAttribute('id', 'cube');
+		cube.setAttribute('geometry', { height: 0.25, width: 0.25, depth: 0.25});
+		cube.setAttribute('color', '#EE844E');
+		cube.setAttribute('position', { x: 0, y: 0, z: -0.5});
+		cube.setAttribute('metalness', 0.2);
+
+		var animationRest = document.createElement('a-animation');
+		animationRest.setAttribute('id', 'animation-rest');
+		animationRest.setAttribute('to', '0 180 0');
+		animationRest.setAttribute('ease', 'sine');
     //animationRest.setAttribute('direction', 'alternate');
     animationRest.setAttribute('dur', 5000);
     animationRest.setAttribute('repeat', 'indefinite');
@@ -141,9 +139,9 @@ function throwCubeAndSubmit() {
 
     scene.append(cube);
 
-  }
+}
 
-  showCube();
+showCube();
 
 //  var c = document.querySelector('#cube');
 //  var hammertime = new Hammer(c);
