@@ -46,10 +46,10 @@
               </a-scene>
             </div>
 
-
+<div id="everythingButCube">
             <h1 style="font-family: 'Lekton', serif;">Hey you!</h1>
 
-            <form class="form" style="font-family: 'Lekton', serif;" action="/" method="post" name="form">
+            <form id="form" class="form" style="font-family: 'Lekton', serif;" name="form" action="/" method="post"> <!--     -->
               <div class="form-group sm-2">
                 <label for="name">What's your first name?</label>
                 <div class="progress" style="width: 75%; height: 20px;">
@@ -57,7 +57,7 @@
 			  	</div>
 				<br/>
                 
-                <input style="background-color: white; width: 50%;" type="text" class="form-control-plaintext" name="name" id="name" value="" placeholder="Jane">
+                <input style="background-color: white; width: 75%;" type="text" class="form-control-plaintext" name="name" id="name" value="" placeholder="Jane">
               </div>
 
               
@@ -88,7 +88,7 @@
     animationRest.setAttribute('to', '0 180 0');
     animationRest.setAttribute('ease', 'sine');
     //animationRest.setAttribute('direction', 'alternate');
-    animationRest.setAttribute('dur', 3000);
+    animationRest.setAttribute('dur', 5000);
     animationRest.setAttribute('repeat', 'indefinite');
     cube.append(animationRest);
 
@@ -99,17 +99,51 @@
 
   showCube();
 
-  var c = document.querySelector('#cube');
-  var hammertime = new Hammer(c);
-  hammertime.on('pan', function(ev) {
-	   alert(ev);
-  });
+//  var c = document.querySelector('#cube');
+//  var hammertime = new Hammer(c);
+//  hammertime.on('pan', function(ev) {
+//	   alert(ev);
+//  });
 
 </script>
 
-
-              <button type="submit" class="btn btn-secondary mb-2">Go!</button>
             </form>
+
+<button id="submit" class="btn btn-secondary mb-2">Go!</button>
+
+
+
+<script type="text/javascript">
+	$('#submit').on('click',function() {
+  		throwCubeAndSubmit();
+	});
+
+function throwCubeAndSubmit() {
+  console.log('Throwing cube...');
+
+  $('#everythingButCube').hide();
+
+  var cube = document.querySelector('#cube');
+  var animationThrow = document.createElement('a-animation');
+      animationThrow.setAttribute('id', 'animation-throw');
+	  animationThrow.setAttribute('attribute', 'position');
+      animationThrow.setAttribute('to', '0 2 0');
+      animationThrow.setAttribute('direction', 'inverse');
+      animationThrow.setAttribute('dur', 2000);
+      //animationThrow.setAttribute('repeat', 'indefinite');
+   cube.append(animationThrow);
+
+  animationThrow.addEventListener('animationend', function () {
+  	console.log('Submitting form...');
+  	$('#form').submit();
+  });
+  //return false;
+  // if you want to submit the form here 
+  //
+}
+
+</script>
+
 
           </div>
 
@@ -118,6 +152,9 @@
     </div>
 
   </center>
+
+  </div>
+
 
 
 </body>
